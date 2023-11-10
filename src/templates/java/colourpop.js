@@ -104,9 +104,9 @@ fetchMakeup('', '');
 
 document.addEventListener('click', (event) => {
   if (event.target.tagName === 'A') {
-    event.preventDefault(); // Prevent the default action of the <a> tag
+    event.preventDefault();
 
-    const productId = event.target.getAttribute('data-id'); // Get the product.id from the data-id attribute of the <a> tag
+    const productId = event.target.getAttribute('data-id');
     const { ipcRenderer } = require('electron');
     ipcRenderer.send('show-product', productId);
   }
@@ -118,16 +118,12 @@ function showModal(text, modalId) {
   var modal = document.getElementById(modalId);
   var modalText = modal.querySelector("p");
 
-  // Update the modal text
   modalText.textContent = text;
 
-  // Show the modal
   modal.style.display = "block";
 
-  // Get the close button element
   var closeBtn = modal.querySelector(".close");
 
-  // Add a click event listener to the close button
   closeBtn.onclick = function() {
     modal.style.display = "none";
     window.removeEventListener('click', outsideClickListener);
@@ -140,15 +136,11 @@ function showModal(text, modalId) {
     }
   }
 
-  // Add a click event listener to the window to close the modal when the user clicks outside of it
   window.addEventListener('click', outsideClickListener);
 }
 
 function favorite(productId, event) {
-  // Prevent the default action of the link
   event.preventDefault();
-
-  // Stop the click event from propagating up to the parent <a> element
   event.stopPropagation();
 
   let pathName = path.join(__dirname, 'Files');
@@ -156,7 +148,6 @@ function favorite(productId, event) {
 
   fs.readFile(filePath, 'utf8', function(err, data) {
     if (err) {
-      // If file doesn't exist, initialize data with an empty array
       if (err.code === 'ENOENT') {
         data = '[]';
       } else {
@@ -164,39 +155,26 @@ function favorite(productId, event) {
         return;
       }
     }
-
-    // Check if the file data is empty and initialize it with an empty array string if it is
     if (data === '') {
       data = '[]';
     }
-
-    // Parse the file data into an array
     let favoritesArray = JSON.parse(data);
 
-    // Check if the product ID is already in the array
     if (favoritesArray.includes(productId)) {
-      // Show the modal and update the modal text
       showModal('The product is already in your list', 'added');
       return;
     }
 
-    // Check if the favoritesArray length is equal to or greater than 5
     if (favoritesArray.length >= 5) {
-      // Show the modal and update the modal text
       showModal('You can only have 5 items in your list', 'excessive');
       return;
     }
-
-    // Add the new product ID to the array
     favoritesArray.push(productId);
-
-    // Write the updated array back to the file
     fs.writeFile(filePath, JSON.stringify(favoritesArray), function(err) {
       if (err) {
         console.error('Error writing to file:', err);
         return;
       }
-
       showModal('The product was added to your list', 'added');
     });
   });

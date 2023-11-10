@@ -55,7 +55,6 @@ var comments = document.getElementById('comments')
 let pathName = path.join(__dirname, 'Files')
 let file = path.join(pathName, `comment_${productId}.txt`)
 
-// Check if the file exists, if not create it
 if (!fs.existsSync(file)) {
     fs.writeFile(file, '', function(err) {
         if (err) {
@@ -65,12 +64,10 @@ if (!fs.existsSync(file)) {
     })
 }
 
-// Load existing comments and display them
 fs.readFile(file, 'utf8', function(err, data){
   if(err){
       return console.log(err);
   }
-  // Replace \n with <br> to create line breaks in HTML
   var formattedData = data.replace(/\n/g, '<br>');
   comments.innerHTML = formattedData;
 });
@@ -82,7 +79,6 @@ btnSubmit.addEventListener('click', function() {
         return console.log(err);
       }
       console.log('Comment added');
-      // Update the displayed comments
       comments.innerHTML += newComment.replace(/\n/g, '<br>');
       userComment.value = '';
     });
@@ -124,17 +120,15 @@ popup.appendChild(popupContent);
 popup.appendChild(popupUsernameInput);
 document.body.appendChild(popup);
 
-// ...
-
 var overlay = document.createElement('div');
 overlay.className = 'overlay';
-overlay.style.display = 'none'; // Set display to 'none' by default
+overlay.style.display = 'none';
 document.body.appendChild(overlay);
 
 userComment.addEventListener('focus', function() {
   if (!username) {
     popup.style.display = 'block';
-    overlay.style.display = 'block'; // Show overlay when popup is displayed
+    overlay.style.display = 'block';
     popupUsernameInput.focus();
   }
 });
@@ -146,7 +140,7 @@ btnSubmit.addEventListener('click', function() {
     userComment.value = '';
   } else if (!username) {
     popup.style.display = 'block';
-    overlay.style.display = 'block'; // Show overlay when popup is displayed
+    overlay.style.display = 'block';
     document.body.style.filter = 'blur(5px)';
     popupUsernameInput.focus();
   }
@@ -157,16 +151,12 @@ function showModal(text, modalId) {
   var modal = document.getElementById(modalId);
   var modalText = modal.querySelector("p");
 
-  // Update the modal text
   modalText.textContent = text;
 
-  // Show the modal
   modal.style.display = "block";
 
-  // Get the close button element
   var closeBtn = modal.querySelector(".close");
 
-  // Add a click event listener to the close button
   closeBtn.onclick = function() {
     modal.style.display = "none";
     window.removeEventListener('click', outsideClickListener);
@@ -179,15 +169,11 @@ function showModal(text, modalId) {
     }
   }
 
-  // Add a click event listener to the window to close the modal when the user clicks outside of it
   window.addEventListener('click', outsideClickListener);
 }
 
 function favorite(productId, event) {
-  // Prevent the default action of the link
   event.preventDefault();
-
-  // Stop the click event from propagating up to the parent <a> element
   event.stopPropagation();
 
   let pathName = path.join(__dirname, 'Files');
@@ -195,7 +181,6 @@ function favorite(productId, event) {
 
   fs.readFile(filePath, 'utf8', function(err, data) {
     if (err) {
-      // If file doesn't exist, initialize data with an empty array
       if (err.code === 'ENOENT') {
         data = '[]';
       } else {
@@ -203,33 +188,24 @@ function favorite(productId, event) {
         return;
       }
     }
-
-    // Check if the file data is empty and initialize it with an empty array string if it is
     if (data === '') {
       data = '[]';
     }
 
-    // Parse the file data into an array
     let favoritesArray = JSON.parse(data);
 
-    // Check if the product ID is already in the array
     if (favoritesArray.includes(productId)) {
-      // Show the modal and update the modal text
       showModal('The product is already in your list', 'added');
       return;
     }
 
-    // Check if the favoritesArray length is equal to or greater than 5
     if (favoritesArray.length >= 5) {
-      // Show the modal and update the modal text
       showModal('You can only have 5 items in your list', 'excessive');
       return;
     }
 
-    // Add the new product ID to the array
     favoritesArray.push(productId);
 
-    // Write the updated array back to the file
     fs.writeFile(filePath, JSON.stringify(favoritesArray), function(err) {
       if (err) {
         console.error('Error writing to file:', err);
