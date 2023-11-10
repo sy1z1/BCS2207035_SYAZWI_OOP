@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200;6..12,300;6..12,400;6..12,700;6..12,800&display=swap" rel="stylesheet">
+    <style>
+        html{
+            scroll-behavior: smooth;
+        }
+        body{
+            font-family: 'Nunito Sans', sans-serif;
+        }
+        a {
+            text-decoration: none;
+        }
+        .header img{
+            position: absolute;
+            top: 0;
+            left: 43%;
+            width: 15%;
+        }
+        .header p{
+            position: relative;
+            top: 75px;
+            left: 39.9%;
+            width: 15%;
+            font-family: 'Roboto', sans-serif;
+            font-size: 25px;
+            font-weight: lighter;
+            width: max-content;
+        }
+        .header{
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 20%;
+        }
+        .hr hr{
+            border: black 1px solid;
+        }
+        hr{
+            position: relative;
+            border: rgba(255, 255, 255, 0.422) solid 0.5px;
+        }
+        .product-color{
+            display: flex;
+            flex-wrap: wrap;
+            width: 30%;
+            height: max-content;
+        }
+        .color{
+            top: 0;
+            border-radius: 20px;
+        }
+        #display{
+            position: relative;
+            top: 150px;
+            left: 70px;
+            display: flex;
+            width: 90%;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .product-image{
+            position: relative;
+            width: 500px;
+            height: 500px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .product-image img{
+            width: 50%;
+        }
+        .product-desc{
+            position: relative;
+            top: -40px;
+            margin-left: 30px;
+        }
+        .desc-text h3{
+            font-size: 50px;
+        }
+        .desc-other button{
+            background-color: black;
+            border: none;
+            color: white;
+            padding: 20px;
+            margin-top: 30px;
+            transition: 400ms;
+        }
+        .desc-other button:hover{
+            background-color: rgba(0, 0, 0, 0);
+            border: black solid 1px;
+            color: rgb(0, 0, 0);
+            padding: 20px;
+            margin-top: 30px;
+        }
+        .mainWrapper{
+            position: relative;
+            top: 50px;
+            left: 70px;
+            width: 90%;
+            height: 100%;
+            background-color: black;
+            color: white;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 30px;
+        }
+        .form-group textarea{
+            position: relative;
+            background-color: black;
+            color: white;
+            font-family: Tahoma;
+            text-align: center;
+            border: rgba(255, 255, 255, 0.667) solid 1px;
+            border-radius: 20px 20px 0 0;
+            width: 30%;
+            padding: 10px 10px;
+        }
+        .form-group textarea:hover{
+            color: black;
+            background-color: rgb(255, 100, 239);
+        }
+        #commentsDisplay{
+            text-align: left;
+            border: 1px rgb(255, 100, 239) solid;
+            border-radius: 30px;
+            margin: 30px;
+            padding: 20px;
+        }
+        .button{
+            position: relative;
+            width: 31.6%;
+            padding: 18px;
+            border-radius: 0 0 20px 20px;
+            background-color: white;
+
+        }
+        .popup {
+          display: none;
+          position: fixed;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          padding: 20px;
+          background-color: #fff;
+          border: 1px solid #ccc;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          z-index: 3;
+          width: 30%;
+          height: 20%;
+        }
+
+        .popup-content {
+          text-align: center;
+          position: relative;
+          top: 10%;
+          font-size: 25px;
+        }
+
+        .popup-username-input {
+          margin-top: 10px;
+          position: relative;
+          left: 19%;
+          border-radius: 30px;
+          width: 60%;
+          height: 15%;
+          padding-left: 20px;
+        }
+        .overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.5);
+          z-index: 1;
+        }
+        .modal {
+          display: none;
+          position: fixed;
+          z-index: 3;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          overflow: auto;
+          background-color: rgb(0,0,0);
+          background-color: rgba(0,0,0,0.4);
+          padding-top: 60px;
+        }
+
+        .modal-content {
+          background-color: #fefefe;
+          margin: 5% auto;
+          padding: 20px;
+          border: 1px solid #888;
+          width: 80%;
+          position: relative;
+          top: 25%;
+        }
+
+        .close {
+          color: #aaa;
+          float: right;
+          font-size: 28px;
+          font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+          color: black;
+          text-decoration: none;
+          cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <a href="colourpop.html">Back</a>
+    <div id="excessive" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p>You can only add 5 item only</p>
+          <p style="font-size: 13px;">Subscribe to pro Slay</p>
+        </div>
+    </div>
+    <div id="added" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p>Product added to your list!</p>
+        </div>
+    </div>
+    <div class="header">
+        <img src="pic/slay.png">
+        <p>Your True Beauty Companion</p>
+    </div>
+    <br><br>
+    <hr class="hr">
+    <div class="body">
+        <div id="display">
+        </div>
+    </div>
+    <br><br><br><br><br><br>
+    <div class="mainWrapper">
+        <h1>Comment Your Thought</h1>
+      
+        <form>
+          <div class="form-group">
+            <textarea id="userComment" class="form-control" rows="2" placeholder="Your Comment"></textarea>
+          </div>
+        </form>
+        <button id="btnSubmit" class="button">Submit</button>
+        <div id="commentsDisplay">
+          <h2>Comments:</h2>
+          <p id="comments"></p>
+        </div>
+      </div>             
+    <br><br>
+    <script src="java/dior.js"></script>
+  </body>  
+</html>

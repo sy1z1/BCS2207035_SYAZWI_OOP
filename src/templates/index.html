@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200;6..12,300;6..12,400;6..12,700;6..12,800&display=swap" rel="stylesheet">
+    <style>
+        html{
+            scroll-behavior: smooth;
+        }
+        body{
+            font-family: 'Nunito Sans', sans-serif;
+            position: absolute;
+            left: -150px;
+            overflow-x: hidden;
+        }
+        .header{
+            position: absolute;
+            top: 0;
+            left: -180px;
+            width: 100%;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            padding-top: 30px;
+            padding-left: 200px;
+        }
+        .header img{
+            width: 5%;
+            margin-right: 30px;
+        }
+        .navbar{
+            position: relative;
+            left: -50px;
+        }
+        .navbar a{
+            text-decoration: none;
+            font-size: 20px;
+            margin-left: 50px;
+            color: black;
+        }
+        .start{
+            position: absolute;
+            left: 70%;
+            font-family: 'Roboto', sans-serif;
+            text-decoration: none;
+            color: white;
+            background-color: rgb(186, 155, 42);
+            padding: 20px;
+            transition: 70ms ease-in-out;
+        }
+        .start:hover{
+            border: rgb(186, 155, 42) solid;
+            background-color: #ffffff;
+            color: rgb(186, 155, 42);
+        }
+        .slideshow-container {
+          position: relative;
+          width: 1700px;
+          max-height: 500px;
+          top: 100px;
+          left: 60px;
+          overflow: hidden;
+
+        }
+
+        .slides {
+          display: flex;
+          transition: transform 1s ease-in-out; /* Increase the duration for a smoother transition */
+        }
+
+        .slide {
+          min-width: 100%;
+          box-sizing: border-box;
+        }
+
+        .slide img {
+          width: 100%;
+          vertical-align: top;
+          position: relative;
+          top: -300px;
+        }
+
+        .controls {
+          position: absolute;
+          bottom: 10px;
+          left: 50%;
+          transform: translateX(-50%);
+          display: flex;
+          gap: 8px;
+        }
+
+        .controls label {
+          width: 10px;
+          height: 10px;
+          background-color: #fff;
+          border-radius: 50%;
+          display: inline-block;
+          cursor: pointer;
+        }
+
+        input[type="radio"] {
+          display: none;
+        }
+
+        #slide1:checked ~ .slides {
+          transform: translateX(0);
+        }
+
+        #slide2:checked ~ .slides {
+          transform: translateX(-100%);
+        }
+
+        #slide3:checked ~ .slides {
+          transform: translateX(-200%);
+        }
+
+        #slide1:checked ~ .controls label:nth-child(1),
+        #slide2:checked ~ .controls label:nth-child(2),
+        #slide3:checked ~ .controls label:nth-child(3) {
+          background-color: #333;
+        }
+        #about{
+            position: relative;
+            left: 180px;
+            top: 110px;
+        }
+        #about img{
+            width: 100%;
+        }
+        #about a{
+            text-decoration: none;
+            color: white;
+            background-color: #333;
+            padding: 20px;
+            position: relative;
+            top: -200px;
+            left: 400px;
+            transition: 70ms ease-in-out;
+        }
+        #about a:hover{
+            border: #333 solid;
+            background-color: #ffffff00;
+            color: #333;
+        }
+        #service{
+            position: relative;
+            left: 90px;
+            top: 110px;
+        }
+        #service img{
+            width: 100%;
+        }
+        .pic1{
+            position: relative;
+            width: 20%;
+            top: -550px;
+            left: 300px;
+            overflow: hidden;
+        }
+        .pic1 img{
+            width: 100%;
+            transition: 400ms ease-in-out;
+        }
+        .pic1 img:hover{
+            transform: scale(1.2);
+        }
+        .pic2{
+            position: relative;
+            width: 20%;
+            top: -750px;
+            left: 620px;
+            overflow: hidden;
+        }
+        .pic2 img{
+            width: 100%;
+            transition: 400ms ease-in-out;
+        }
+        .pic2 img:hover{
+            transform: scale(1.2);
+        }
+        .pic3{
+            position: relative;
+            width: 20%;
+            top: -1270px;
+            left: 950px;
+            overflow: hidden;
+        }
+        .pic3 img{
+            width: 100%;
+            transition: 400ms ease-in-out;
+        }
+        .pic3 img:hover{
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="pic/slay.png">
+        <div class="navbar">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#service">Services</a>
+            <a href="#shop">Shop</a>
+        </div>
+        <a href="colourpop.html" class="start">GET A LOOK</a>
+    </div>
+    <div class="slideshow-container">
+        <input type="radio" id="slide1" name="slide" checked>
+        <input type="radio" id="slide2" name="slide">
+        <input type="radio" id="slide3" name="slide">
+    
+        <div class="slides">
+          <div class="slide">
+            <img src="pic/SLAY2.png" alt="Image 1">
+          </div>
+          <div class="slide">
+            <img src="pic/makeup-certification.jpg" alt="Image 2">
+          </div>
+          <div class="slide">
+            <img src="pic/SLAY3.png" alt="Image 3">
+          </div>
+        </div>
+        
+        <div class="controls">
+          <label for="slide1"></label>
+          <label for="slide2"></label>
+          <label for="slide3"></label>
+        </div>
+      </div>
+      <div id="about">
+        <img src="pic/contact.png">
+        <a href="#">CONTACT US</a>
+      </div>
+      <div id="service">
+        <img src="pic/best.png">
+        <div class="pic1">
+            <img src="pic/colourpop.png">
+        </div>
+        <div class="pic2">
+            <img src="pic/dior.png">
+        </div>
+        <div class="pic3">
+            <img src="pic/nyx.png">
+        </div>
+      </div>
+</body>
+<script>
+    let currentSlide = 1;
+    const totalSlides = 3;
+    
+    function showNextSlide() {
+      currentSlide++;
+      if (currentSlide > totalSlides) {
+        currentSlide = 1;
+      }
+      document.getElementById(`slide${currentSlide}`).checked = true;
+    }
+    
+    setInterval(showNextSlide, 3000); // Change slide every 3 seconds
+  </script>
+  
+</html>

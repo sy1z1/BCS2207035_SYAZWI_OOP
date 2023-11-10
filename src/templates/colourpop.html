@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200;6..12,300;6..12,400;6..12,700;6..12,800&display=swap" rel="stylesheet">
+    <style>
+        html{
+            scroll-behavior: smooth;
+        }
+        body{
+            font-family: 'Nunito Sans', sans-serif;
+        }
+        a {
+            text-decoration: none;
+        }
+        .header img{
+            position: absolute;
+            top: 0;
+            left: 43%;
+            width: 15%;
+        }
+        .header p{
+            position: relative;
+            top: 75px;
+            left: 39.9%;
+            width: 15%;
+            font-family: 'Roboto', sans-serif;
+            font-size: 25px;
+            font-weight: lighter;
+            width: max-content;
+        }
+        .header{
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 20%;
+        }
+
+        /* Add this to your CSS file */
+        .video {
+            position: absolute;
+            top: 210px;
+            left: 130px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        video {
+            position: relative;
+            width: 100%; 
+            height: auto; 
+        }
+
+        .search{
+            position: relative;
+            top: 100px;
+            z-index: 3;
+
+        }
+        hr{
+            position: relative;
+            top: 130px;
+        }
+        #display{
+            position: relative;
+            top: 70px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 1200px;
+        }
+        #display a{
+            position: relative;
+            width: 25%;
+            margin: 30px;
+            margin-bottom: 30px;
+        }
+        .product{
+            width: 100%;
+            box-shadow: 0 0  30px rgba(0, 0, 0, 0.389);
+            margin: 0 40px;
+            position: relative;
+            left: -40px;
+        }
+        .image-product{
+            position: relative;
+            width: 294px;
+            height: 250px;
+            background-image: url("pic/nopic.jpeg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            overflow: hidden;
+        }
+        .desc{
+            position: relative;
+            width: 83.5%;
+            padding: 30px;
+        }
+        .desc button {
+            position: relative;
+            text-decoration: none;
+            border: none;
+            background-color: white;
+            transition: filter 800ms, transform 400ms ease-in-out ;
+            z-index: 2;
+        }
+        .button button img{
+            position: relative;
+            width: 10px;
+        }
+
+        .desc button:hover {
+            transform: scale(1.2);
+        }
+        .product img{
+            position: relative;
+            top: -100px;
+            width: 120%;
+        }
+        .menu{
+            position: relative;
+            top: 130px;
+        }
+        .brand {
+          position: relative;
+          width: 200px;
+          left: 650px;
+          z-index: 2;
+        }
+
+        .dropdown {
+          position: relative;
+          width: 100%;
+        }
+        .selected {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            cursor: pointer;
+            position: relative;
+            top: 265px;
+            text-align: center;
+            padding-left: 80px;
+        }
+
+        .options {
+            position: absolute;
+            top: 300px;
+            left: -600px;
+            width: 700%;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .option {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 50px;
+          cursor: pointer;
+        }
+
+        .option:hover {
+          background-color: #eee;
+        }
+        .body{
+            display: flex;
+            position: absolute;
+            top: 650px;
+            width: 98%;
+        }
+        .type{
+            width: 300px;
+            height: 500px;
+            position: relative;
+            top: 10px;
+            left: 30px;
+            border: 1px solid black;
+            padding: 10px;
+        }
+        .type select{
+            appearance: none;
+            position: relative;
+            left: 35px;
+            width: 70%;
+            height: 6%;
+            background-color: rgb(255, 255, 255);
+            border: 1px solid rgba(0, 0, 0, 0.579);
+            border-radius: 10px;
+            padding-left: 60px;
+            margin: 30px 10px;
+            color: #262626;
+        }
+        .type select:hover{
+            background-color: black;
+            color: #fff;
+        }
+        .modal {
+          display: none;
+          position: fixed;
+          z-index: 3;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          overflow: auto;
+          background-color: rgb(0,0,0);
+          background-color: rgba(0,0,0,0.4);
+          padding-top: 60px;
+        }
+
+        .modal-content {
+          background-color: #fefefe;
+          margin: 5% auto;
+          padding: 20px;
+          border: 1px solid #888;
+          width: 80%;
+          position: relative;
+          top: 25%;
+        }
+
+        .close {
+          color: #aaa;
+          float: right;
+          font-size: 28px;
+          font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+          color: black;
+          text-decoration: none;
+          cursor: pointer;
+        }
+        .heart img{
+            width: 100%;
+            transition: 300ms ease-in-out;
+        }
+        .heart a{
+            position: absolute;
+            top: 77%;
+            right: 70px;
+            width: 60px;
+            z-index: 2;
+        }
+        .heart img:hover{
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+    <div id="excessive" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p>You can only add 5 item only</p>
+          <p style="font-size: 13px;">Subscribe to pro Slay</p>
+        </div>
+    </div>
+    <div id="added" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p>Product added to your list!</p>
+        </div>
+    </div>
+    <a href="index.html">Back</a>
+    <span class="heart"><a href="nyx.html"><img src="pic/heart2.png"></a></span>
+    <div class="header">
+        <img src="pic/slay.png">
+        <p>Your True Beauty Companion</p>
+    </div>
+    <br><br>
+    <hr>
+    <div class="video">
+        <video autoplay muted loop id="myVideo">
+            <source src="pic/makeup.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="menu">
+        <div class="brand">
+            <div class="dropdown">
+                <div class="selected" id="brandSelect" onclick="toggleDropdown()">Brand</div>
+                <div class="options" id="brandOptions">
+                    <div class="option" onclick="selectOption('NYX')">NYX</div>
+                    <div class="option" onclick="selectOption('Smashbox')">Smashbox</div>
+                    <div class="option" onclick="selectOption('Maybelline')">Maybelline</div>
+                    <div class="option" onclick="selectOption('L\'Oreal')">L'Oreal</div>
+                    <div class="option" onclick="selectOption('E.L.F')">E.L.F</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="body">
+        <div class="type">
+            <select id="makeupTypeSelect" onchange="handleFilterChange()">
+                <option>Make Up Type</option>
+            </select>
+        </div>
+        <div id="display">
+            <a href='#'>
+                <div class="product">
+                  <div class="image-product">
+                    <img src="${product.image_link}" alt="${product.name}">
+                  </div>
+                  <div class="desc">
+                    <h4>${product.brand}</h4>
+                    <p>${product.name}</p>
+                    <p>${product.price_sign}${product.price}</p>
+                    <button class="button"><img src="pic/heart.png" style="width: 30px; position: relative; top: 10px;"></button>
+                  </div>
+                </div>
+              </a>
+        </div>
+    </div>
+    <script src="java/colourpop.js"></script>
+  </body>  
+</html>
